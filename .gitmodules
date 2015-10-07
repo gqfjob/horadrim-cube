@@ -1,0 +1,12 @@
+[submodule "roles/common"]
+	path = roles/common
+	url = git@github.com:linkdesu/ansible-role-common.git
+[submodule "roles/nginx"]
+	path = roles/nginx
+	url = git@github.com:linkdesu/ansible-role-nginx.git
+[submodule "roles/php"]
+	path = roles/php
+	url = git@github.com:linkdesu/ansible-role-php.git
+[submodule "roles/mariadb"]
+	path = roles/mariadb
+	url = git@github.com:linkdesu/ansible-role-mariadb.git

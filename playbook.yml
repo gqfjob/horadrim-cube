@@ -1,0 +1,9 @@
+---
+- name: Install Nginx, PHP, Mysql
+  hosts: localhost
+  remote_user: root
+  roles:
+    - common
+    - nginx
+    - php
+    - mariadb
