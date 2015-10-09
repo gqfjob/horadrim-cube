@@ -3,7 +3,8 @@
   hosts: localhost
   remote_user: root
   roles:
-    - common
-    - nginx
-    - php
-    - mariadb
+    # - common
+    # - nginx
+    # - php
+    # - mariadb
+    - nodejs
