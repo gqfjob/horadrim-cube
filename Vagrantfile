@@ -25,9 +25,11 @@ Vagrant.configure(2) do |config|
   #  vb.memory = "1024"
   #end
 
-  # 系统启动、同步目录挂载完成后才执行的自定义 shell
+  # 系统启动、同步目录挂载完成后才执行的 shell
   $script = <<-SHELL
     echo "$(hostname) is online ! ✔"
   SHELL
   config.vm.provision "shell", run: "always", inline: $script
+  # 不建议此处直接执行 install.sh ，输出信息太少
+  # config.vm.provision "shell", path: "install.sh"
 end

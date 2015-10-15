@@ -5,7 +5,7 @@
 
 ## Features
 
-* 除了 Yum 可以直接下载的资源，其他所有较大的资源都是必须提前下载好使用的，可以不受 墙 的影响，用最爱的下载工具下好就行
+* 除了 Yum 可以直接下载的资源，其他所有较大的资源都是必须提前下载好使用的，可以不受**墙**的影响，用最爱的下载工具下好就行
 * 配置 Vagrant, Nginx, PHP, MariaDB 不需要额外的知识，只需要把配置文件放到指定目录即可
 * PHP 的编译参数可调，需要部分 YAML 知识
 
@@ -44,7 +44,21 @@
 1. 从 [PHP官网](https://secure.php.net/downloads.php) 下载 `.tar.gz` 格式的 PHP 源码包，并放置到 roles/php/files 目录下
 1. 如果你下载的是 php-5.6.14.tar.gz 那么可以直接使用。如果不是，请修改 roles/php/defaults>main.yml 中 php_version, php_tarball 与下载的源码保持一致
 1. `sudo su root` 切换到 root 账户
-1. `./init.sh` 执行 init.sh 脚本
+1. `cd /vagrant; ./install.sh` 执行 install.sh 脚本
+
+最后，如果看到以下内容，那么恭喜你，安装成功了！
+如果你没有修改 Vagrantfile ，那么访问 http://192.168.44.101/info.php 应该就能够看到 `phpinfo()` 的输出信息了。
+
+```shell
+Writing lock file
+Generating autoload files
+==========Completed !==========
+Install npm global packages
+./install.sh: line 53: npm: command not found
+==========Completed !==========
+✔ Installation done !
+```
+
 
 ## Main packages List
 
@@ -54,9 +68,11 @@
 ### PHP
 ### Nginx
 ### MariaDB(MySQL)
+### Nodejs
 
 
 ## Attention
 
 1. 本脚本多次执行的情况下是 **幂等** 的，所以遇到错误无需惊慌，重新来过即可
 1. 复杂的编译步骤会根据某些条件在确定可执行文件存在的情况下，略过执行，所以如果你想重新编译，请删除可执行文件
+1. 偶尔 Yum 也会有下载超时的情况，可以在 install.yml 中注释掉已执行的步骤后重新执行
